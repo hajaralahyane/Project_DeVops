@@ -1,0 +1,208 @@
+/* --- Importation de la police --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* --- Définition des Variables de Couleur (basées sur la palette fournie) --- */
+:root {
+    --color-bg-deep: #190019;       /* Noir profond (le plus sombre) */
+    --color-primary-dark: #2B124C;  /* Violet foncé */
+    --color-secondary: #522B5B;     /* Violet moyen-sombre */
+    --color-accent-soft: #854F6C;  /* Mauve poussiéreux */
+    --color-text-light: #DFB6B2;   /* Rose pâle (parfait pour le texte) */
+    --color-bg-form: #FBE4D8;      /* Crème très clair (fond de la carte) */
+
+    /* Couleurs de statut */
+    --color-checked-bg: #854F6C;
+    --color-checked-text: #FBE4D8;
+}
+
+/* --- Styles de Base --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    /* Utilise le dégradé de fond de l'image de la palette */
+    background: linear-gradient(180deg, #FBE4D8 0%, #190019 100%);
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    padding-top: 50px;
+    color: var(--color-bg-deep); /* Texte noir par défaut sur fond clair */
+}
+
+/* --- Conteneur Principal --- */
+.container {
+    background: var(--color-bg-form);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 450px;
+    transition: transform 0.3s ease;
+}
+
+h1 {
+    text-align: center;
+    color: var(--color-primary-dark);
+    font-weight: 600;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+/* --- Formulaire d'ajout (index.php) --- */
+form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 12px 20px;
+    border: 2px solid var(--color-accent-soft);
+    border-radius: 12px;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: var(--color-primary-dark);
+    box-shadow: 0 0 10px rgba(43, 18, 76, 0.2);
+}
+
+button {
+    background-color: var(--color-primary-dark);
+    color: var(--color-bg-form);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.2s;
+}
+
+button:hover {
+    background-color: var(--color-bg-deep);
+    transform: translateY(-2px);
+}
+
+/* --- Liste des tâches --- */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: white;
+    margin-bottom: 12px;
+    padding: 15px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 5px solid var(--color-secondary);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+li:hover {
+    transform: scale(1.02) translateX(3px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+    background: var(--color-checked-bg);
+    border-left-color: #854F6C;
+    color: var(--color-checked-text);
+}
+
+/* --- Boutons d'action dans la liste --- */
+.actions {
+    display: flex;
+    gap: 8px;
+}
+
+.actions a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 5px;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+/* Icônes de statut */
+.actions a[href*="update_task"] {
+    color: var(--color-primary-dark);
+}
+
+/* Icône de suppression */
+.actions a[href*="delete_task"] {
+    color: #ff4b2b; /* Rouge pour le danger, hors palette pour clarté */
+}
+
+/* Icône d'édition */
+.actions a[href*="edit_task"] {
+    color: var(--color-accent-soft);
+}
+
+.actions a:hover {
+    background: rgba(0,0,0,0.05);
+}
+
+/* --- Styles spécifiques pour la page d'édition (edit_task.php) --- */
+
+.edit-page {
+    background: linear-gradient(180deg, #190019 0%, #2B124C 100%); /* Fond sombre */
+    color: var(--color-text-light);
+}
+
+.edit-form-container {
+    background: var(--color-primary-dark);
+    border: 1px solid var(--color-secondary);
+    max-width: 500px;
+}
+
+.edit-form-container h1 {
+    color: var(--color-text-light);
+}
+
+.edit-form-container input[type="text"] {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--color-text-light);
+    border-color: var(--color-secondary);
+}
+
+.edit-form-container input[type="text"]:focus {
+    border-color: var(--color-accent-soft);
+}
+
+.edit-form-container button.accent-button {
+    background-color: var(--color-accent-soft);
+    color: white;
+}
+
+.edit-form-container button.accent-button:hover {
+    background-color: var(--color-secondary);
+}
+
+.back-link {
+    color: var(--color-accent-soft);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.back-link:hover {
+    color: var(--color-text-light);
+}
+
+/* --- Responsive --- */
+@media (max-width: 480px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+}
